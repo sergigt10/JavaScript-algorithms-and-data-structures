@@ -1,0 +1,132 @@
+** Rendimiento **
+# No podemos usar el tiempo de ejecucación para determinar si una función es mas eficiente que otra ya que si utilizamos el tiempo entran muchos factores. Lo ideal es contar el número de operaciones simples que tiene que realizar el PC para determinar el rendimiento.
+# Con Big O Notation podemos solucionar esto porqué sólo depende del algoritmo.
+
+** Big O Notation **
+# Nos da una puntuación del código.
+# Podemos mirar el rendimiento por el tiempo, contando operaciones.
+# Nos permite hablar formalmente sobre cómo crece el tiempo de ejecución de un algoritmo a medida que crecen las entradas. 
+# f(n) puede ser lineal (f(n) = n), puede ser cuadrático (f(n) = n2), puede ser constante (f(n) = 1) o podría ser algo completamente diferente.
+# Las operaciones aritmeticas són constantes, la asignación a las variables son constantes, acceder a un elemento en un array es constante.
+# Time Complexity -> cómo podemos analizar el tiempo de ejecución de un algoritmo a medida que augmenta el tamaño de los inputs.
+# Space complexity -> cuánta memória adicional tenemos que asignar para hacer funcionar el código de nuestro algoritmo. Booleans, numbers, undefined, null tienen un espacio constante. Los strings requieren O(n) donde n es la medida del string.
+# El tiempo "logarithmic (log) es bueno". Para obtener el logaritmo de un número tenemos que sumar la veces que dividimos ese número por 2 hasta llegar a menos o igual a 1.
+
+** Big O Notation Object and Array **
+# Cuándo no necesitamos ningún orden es la mejor opción los objetos a nivel de performance.
+# Un array cuándo necesitamos orden también tiene un buen performance dependiendo de la acción.
+# Es mejor dos loops separados.
+
+** Pasos para solucionar un problema **
+# Entender el problema
+# Explorar ejemplos concretos
+# Descomponerlo
+# Solucionar / Simplificar
+# Mirar hacia atrás y refactorizar.
+
+** Patrones para solucionar algoritmos **
+# Frequency counter -> Este patrón utiliza objetos o conjuntos para recopilar valores/frecuencias de valores. Esto puede ayudar a evitar loops anidados o operaciones O(N^2) con arrays/strings.
+# Multiple pointers -> Crear punteros o valores que correspondan a un indice o posición y mover hacia el principio, final o medio basado en cierta condición. Muy eficiente para soluccionar problemas con un mínimo espacio de complejidad.
+# Sliding window -> Se trata de crear una ventana que puede ser un array o un número de una posición a otra. Dependiendo de la situación la ventana incrementa o se cierra (y una nueva ventana es creada). Muy útil para realizar un seguimiento de un subconjunto de datos en un array/string,...
+# Divide and conquer -> dividir un conjunto de datos en pequeñas porciones y luego repetir el proceso con un subconjunto de datos. Puede decrementar el tiempo de complexidad de manera muy eficiente.
+# Dynamic programming
+# Greedy algorithms
+# Backtracking
+
+** Recursión **
+# Un proceso que se llama a si mismo (Una función).
+# Invocamos la misma función con diferentes inputs hasta que se alcance el objetivo.
+# Base case -> Condición para finalizar la recursión.
+# Helpler method recursión tenemos una función dentro de otra.
+# Para arrays se recomienta utilizar slice, spread operator y concat que hacen copias de un array.
+
+POWER SOLUTION
+
+    function power(base, exponent){
+        if(exponent === 0) return 1;
+        return base * power(base,exponent-1);
+    }
+
+FACTORIAL SOLUTION
+
+    function factorial(x){
+       if (x < 0 ) return 0;
+       if (x <= 1 ) return 1;
+       return x * factorial(x-1);
+    }
+
+PRODUCT OF ARRAY SOLUTION
+
+    function productOfArray(arr) {
+        if(arr.length === 0) {
+            return 1;
+        }
+        return arr[0] * productOfArray(arr.slice(1));
+    }
+
+RECURSIVE RANGE SOLUTION
+
+    function recursiveRange(x){
+       if (x === 0 ) return 0;
+       return x + recursiveRange(x-1);
+    }
+
+FIBONACCI SOLUTION
+
+    function fib(n){
+        if (n <= 2) return 1;
+        return fib(n-1) + fib(n-2);
+    }
+
+# Linear search -> buscar un elemento posición por posición en un array.
+# Binary search -> es mucho más rápido. En lugar de eliminar un elemento a la vez, puede eliminar la mitad de los elementos restantes a la vez. Solo funciona con arrays ordenados.
+
+** Sorting algorithms **
+# https://visualgo.net/en/sorting -> ejemplo de funcionamiento de distintos tipos de algoritmos de clasificación.
+
+# Bubble sort -> Un algoritmo de clasificación donde primero los valores más grandes suben hasta la parte superior.
+
+# Selection sort -> Similar al bubble sort, pero en vez de primero ordenar los valores grandes se ordenan los valores pequeños por posición. Mejor rendimiento que el bubble sort (Menos swaps de valores en cada iteración).
+
+# Insertion sort -> Construye el orden de forma gradual empezando desde la izquierda donde siempre tendra valores ordenados.
+
+** Intermediate sorting algorithms **
+# Merge sort -> Es una combinación de merging (unir) i sorting (ordenar). Su función es descomponer un array en pequeños arrays de 0 o 1 elementos y después construir un nuevo array ordenado.
+
+# Quick sort -> Como merge sort, utiliza la opción de que un array de 0 o 1 elementos es siempre ordenado. Funciona seleccionando un elemento (llamado pivote) y encontrando el índice donde debería terminar el pivote en el array ordenado.
+
+# Radix sort -> Es un algoritmo que trabaja con una lista de números. Nunca hace comparaciones entre elementos. Se basa en buscar el número con más digitos y ordenar los números por la cantidad de digitos de estos.
+
+** Data structures **
+# Singly linked lists -> Contiene un head, tail y una medida. Consiste en nodos donde cada nodo tiene un valor y un puntero a otro nodo o null. Comparacion entre Arrays y linked Lists: Una lists no tiene indeces, conectados via nodos con un pointer, acceso random no esta permitido. En cambio un Array tiene orden, la inserción y eliminación no están permitidos.
+Métodos del singly linked lists: Pushing -> Añadir un nuevo node al final. Popping -> Eliminar un nodo desde el final de un Linked List. Shifting -> Eliminar un nuevo nodo desde el inicio del Linked List. UnShifting -> Añadir un nuevo nodo desde el inicio del Linked List. Get -> Recuperar un nodo por su posición. Set -> Cambiar el valor de un nodo basado en su posición. Insert -> Añadir un nodo en una posición específica. Remove -> Eliminar un odo de una posición específica. Reverse -> Revertir. 
+
+# Doubly linked lists -> Casi igual que el Singly Linked Lists excepto que cada nodo tiene otro pointer a un nodo anterior. Métodos: Pushing -> Añadir un nodo al final. Popping -> Eliminar un nodo desde el final. Shifting -> Eliminar un ode desde el inicio. Unshifting -> Añadir un nodo al inicio. Get -> Acceder a un nodo por su posición. Set -> Remplazar el valor de un nodo por otro. Insert -> Añadir un nodo en una posición. Remove -> Eliminar un nodo en una posición.
+# Stacks -> (LIFO) El último valor añadido en un stack sera el primero en eliminarse del stack.
+# Queue -> (FIFO "First in first out"). Se utiliza para tareas background, cargar recursos y tareas de impresión.
+
+# Trees -> Nodos que tienen una relación padre / hijo. Los trees son nonlinear en cambio los lists son linear. Un nodo solo puede apuntar a un hijo. Terminologia -> Root: Nodo top en un tree. Child -> Un nodo conectado directamente a otro nodo. Parent -> El nodo padre de un hijo. Sibling -> Un grupo de nodos con el mismo padre. Leaf -> Un nodo sin hijos. Edge -> La conexión entre un nodo y otro.
+Tipos de trees -> Trees, Binary Trees, Binary Search Trees (BST),...
+
+# Tree taversal (Atravesando un arbol) -> Dos formas: Breadth-first Search (BFS), Depth-first Search (DFS) "PreOrder, PostOrder o InOrder". 
+# Binary heaps -> Otra categoria de arboles. Es muy parecido al binary search tree pero con distintas reglas. En un MaxBinaryHeap los nodos padres son siempre mas grandes que los nodos hijos. En un MinBinaryHeap los nodos padres son siempre mas pequeños que los nodos hijos. Podemos almacenar el binary heap en un list/array.
+Priority queue -> Donde cada elemento tiene un prioridad. Los elementos con mas prioridad son servidos antes que otros con menos prioridad.
+# Hash table -> utilizan key-value. Las llaves no son ordenadas. A diferencia de los arrays los hash tables són rápidos para las siguientes operaciones: buscar valores, añadir nuevos valores y eliminar valores (Són conocidas por su velocidad). 
+Hash tables en lenguajes de programación -> Python tiene Dictionaries, JS tiene Objects y Maps, Java Maps, ...
+Para implementar un hash table usaremos un array.
+Estrategias para evitar colisiones: Separate Chaining y Linear Probing.
+
+# Graphs -> nodos + conneciones. Los graphs se utilizan en redes sociales, mapas, ...
+Terminos esenciales de un graph -> vertex: un nodo, Edge: conexión entre nodos, Weighted/Unweighted: valores asignados a la distancia entre vértices, Directed/Undirected: direcciones asignadas a la distancia entre vértices. 
+Dos formas de almacenar los graphs -> Adjacency List: Puede ocupar menos espacio, rápido para iterar sobre todos los edges y puede ser lento en buscar un edge específico. Adjacency matrix: Ocupa más espacio, lento en iterar todos los edges y rápido en buscar un edge específico. Por eso usamos Adjacency list para almacenar nuestros graphs.
+
+# Graphs traversal -> Visitar / Actualizar / Comprovar cada vertice en un graph. La utilidad de un graph traversal es peer to peer networking, web crawlers, buscar el más cercano, matches/recomendaciones, encontrar el camino más corto,...
+Tenemos el Depth First Graph Traversal (DFS) y el Breadth First Graph Traversal (BFS)
+
+# Dijkstra -> Busca el camino más corto entre dos vertices en un graph.
+
+# Dynamic programming -> Un método para resolver un problema complejo dividiéndolo en una colección de subproblemas más simples, resolviendo cada uno de esos subproblemas solo una vez y almacenando sus soluciones. Sólo funciona con subestructuras optimizadas (Optimal substructure) y subproblemas superpuestos (Overlapping subproblems).
+Subproblemas superpuestos (Overlapping subproblems): se dice que un problema tiene subproblemas superpuestos si se puede dividir en subproblemas que se reutilizan varias veces.  
+Subestructuras optimizadas (Optimal substructure): De un problema se dice que tiene una subesctructura optimizada si tiene una solucion óptima que puede ser construida desde una solución óptima de sus subproblemas.
+Memoization: Almacenar los resultados de costosas llamadas a funciones y devolver el resultado en caché cuando se repiten las mismas entradas. 
+Tabulation: Guardar los resultados de un resultado previo en una tabla (normalmente un array). Normalmente se utiliza una iteración. Mejor espacio de complejidad (space complexity)
